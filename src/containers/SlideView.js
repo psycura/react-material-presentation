@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React  from "react";
 import { browserHistory } from 'react-router'
 
 import { Elastic, Expo, Power3, TimelineMax, TweenMax } from "gsap";
@@ -11,92 +11,14 @@ import * as SlideActions from "../actions/SlideActions";
 
 let tl = new TimelineMax ();
 
-
-class SlideView extends Component {
+const SlideView = ( props ) => {
     
-    render () {
-        const { slides, slideNumber, nextSlideNumber } = this.props;
-        
-        const slideIndex     = slideNumber - 1;
-        const nextSlideIndex = nextSlideNumber - 1;
-        
-        
-        let styles = {
-            prev    : {
-                display : 'none'
-            },
-            current : {},
-            next    : {
-                position  : 'absolute',
-                overflow  : 'hidden',
-                top       : '110%',
-                height    : '100%',
-                width     : '100%',
-                transform : 'none',
-            }
-        };
-        
-        return (
-            <div className="SlideView" onClick={this.nextSlide}>
-                {
-                    slideIndex > 0
-                    &&
-                    <div style={styles.prev} className="prev">
-                        <Slide slide={slides[ slideIndex - 1 ]}
-                               slideNumber={slideNumber - 1}
-                               style={styles.prev}
-                        />
-                    </div>
-                }
-                
-                <div style={styles.current} className="current">
-                    <Slide slide={slides[ slideIndex ]}
-                           slideNumber={slideNumber}
-                           style={styles.current}
-                    />
-                </div>
-                
-                
-                <div style={styles.next} className="next">
-                    <Slide slide={slides[ nextSlideIndex ]}
-                           slideNumber={nextSlideNumber}
-                    />
-                </div>
-            
-            </div>
-        );
-    }
+    const { slides, slideNumber, nextSlideNumber } = props;
     
-    nextSlide = () => {
-        this.slideOut ();
-    };
+    const slideIndex     = slideNumber - 1;
+    const nextSlideIndex = nextSlideNumber - 1;
     
-    slideOut = () => {
-        const button = document.querySelector ( '.current .button' );
-        const card   = document.querySelector ( '.current' );
-        
-        TweenMax.to ( button, 1, {
-            ease : Expo.easeOut,
-            y    : '-400'
-        } );
-        
-        TweenMax.to ( card, 1.45, {
-            ease       : Expo.easeOut,
-            y          : '-200%',
-            delay      : .5,
-            onComplete : () => {
-                if ( this.props.nextSlideNumber === 1 ) {
-                    browserHistory.push ( '/' )
-                } else {
-                    this.props.actions.nextSlide ( this.props.slideNumber + 1 );
-                    this.slideIn ()
-                }
-                
-            }
-        } )
-    };
-    
-    slideIn = () => {
+    const slideIn = () => {
         const button = document.querySelector ( '.current .button' );
         const card   = document.querySelector ( '.current' );
         
@@ -123,12 +45,82 @@ class SlideView extends Component {
             onComplete : () => {
             }
         }, '-=.2' )
-        
     };
     
+    const slideOut = () => {
+        const button = document.querySelector ( '.current .button' );
+        const card   = document.querySelector ( '.current' );
+        
+        TweenMax.to ( button, 1, {
+            ease : Expo.easeOut,
+            y    : '-400'
+        } );
+        
+        TweenMax.to ( card, 1.45, {
+            ease       : Expo.easeOut,
+            y          : '-200%',
+            delay      : .5,
+            onComplete : () => {
+                if ( props.nextSlideNumber === 1 ) {
+                    browserHistory.push ( '/' )
+                } else {
+                    props.actions.nextSlide ( props.slideNumber + 1 );
+                    slideIn ()
+                }
+                
+            }
+        } )
+    };
     
-}
-
+    const nextSlide = () => {
+        slideOut ();
+    };
+    
+    let styles = {
+        prev    : {
+            display : 'none'
+        },
+        current : {},
+        next    : {
+            position  : 'absolute',
+            overflow  : 'hidden',
+            top       : '110%',
+            height    : '100%',
+            width     : '100%',
+            transform : 'none',
+        }
+    };
+    
+    return (
+        <div className="SlideView" onClick={nextSlide}>
+            {
+                slideIndex > 0
+                &&
+                <div style={styles.prev} className="prev">
+                    <Slide slide={slides[ slideIndex - 1 ]}
+                           slideNumber={slideNumber - 1}
+                           style={styles.prev}
+                    />
+                </div>
+            }
+            
+            <div style={styles.current} className="current">
+                <Slide slide={slides[ slideIndex ]}
+                       slideNumber={slideNumber}
+                       style={styles.current}
+                />
+            </div>
+            
+            <div style={styles.next} className="next">
+                <Slide slide={slides[ nextSlideIndex ]}
+                       slideNumber={nextSlideNumber}
+                />
+            </div>
+        
+        </div>
+    );
+    
+};
 
 function mapStateToProps ( state ) {
     return {
