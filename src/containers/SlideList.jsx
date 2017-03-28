@@ -13,7 +13,6 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as SlideActions from "../actions/SlideActions";
 
-
 let tl = new TimelineMax ();
 let cardHeight, cardWidth;
 
@@ -116,12 +115,12 @@ class SlideList extends Component {
         
         const list = document.querySelector ( '.list' );
         const card = document.querySelector ( '.cardMinimized' );
-        console.log ( card );
-        
-        TweenMax.to ( list, .375, {
-            opacity : 0
+        const time=.375;
+    
+        TweenMax.to ( list, time, {
+            opacity : 1
         } );
-        tl.to ( card, .375, {
+        tl.to ( card, time, {
             bezier : {
                 type   : 'soft',
                 values : [
@@ -130,7 +129,7 @@ class SlideList extends Component {
                     { width : '100%', height : '100%' } ]
             }
         } )
-        .to ( '.button', .375, {
+        .to ( '.button', time, {
             top       : 'auto',
             boxShadow : 'rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px',
             bezier    : {
@@ -142,8 +141,8 @@ class SlideList extends Component {
             },
             width     : 100,
             height    : 100,
-        }, '-=.375' )
-        .to ( '.card-header', .375, {
+        }, `-=${time}` )
+        .to ( '.card-header', time, {
             backgroundColor : this.props.slides[ 0 ].mainColor,
             onComplete      : () => {
                 browserHistory.push ( '/slides' );

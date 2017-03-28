@@ -42,8 +42,6 @@ const SlideView = ( props ) => {
         .to ( button, 1, {
             ease       : Elastic.easeOut.config ( 1, 0.3 ),
             bottom     : '-50',
-            onComplete : () => {
-            }
         }, '-=.2' )
     };
     
