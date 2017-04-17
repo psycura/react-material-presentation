@@ -1,14 +1,35 @@
-.App {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw; }
+@import url(../../node_modules/animate.css/animate.css);
+.animated {
+  animation-duration: .377s; }
 
-.SlideBg {
-  width: 90vw;
-  height: 90vh;
-  margin: 0 auto;
-  position: relative; }
+.main-wrapper {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  position: relative;
+  height: 100vh;
+  overflow: auto; }
+
+.container {
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden; }
+
+.page-content {
+  min-height: 100%;
+  max-height: 100%;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 256px;
+  overflow: hidden; }
+  .page-content.sidenav-collapsed {
+    margin-left: 68px; }
 
 /*# sourceMappingURL=App.css.map */

@@ -1,0 +1,36 @@
+.presentation-demos {
+    background-color: #cfd8dc;
+    height:           100%;
+
+    .md-toolbar {
+        height: 56px;
+    }
+
+    .demos-grid {
+        padding:               48px 12px;
+        display:               grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap:       20px;
+        grid-row-gap:          20px;
+        justify-items:         stretch;
+        align-items:           stretch;
+
+    }
+
+    .grid-cell {
+        margin:         0 12px 24px 12px;
+        flex-direction: column;
+        display:        flex;
+    }
+
+    .slide-preview {
+        max-height: 288px;
+
+        .md-card-content {
+            overflow: hidden;
+            height:   156px;
+        }
+    }
+}
+
+

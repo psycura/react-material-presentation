@@ -1,5 +1,5 @@
-import { NEXT_SLIDE, RESET_TO_FIRST } from '../constants/ActionTypes';
-import slides from '../data/slides';
+import { NEXT_SLIDE, RESET_TO_FIRST } from '../../constants/ActionTypes';
+import slides from '../../data/slides';
 
 const initialState = {
     slides          : slides,

@@ -4,8 +4,8 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 const CardLayout = ( props ) => {
     
     const { slide } = props;
-    const { card }  = slide.components.wrapper;
-    const headerBg  = card.cardHeader.media ? `url('../assets/${card / cardHeader.media}')` : card.cardHeader.bgColor;
+    const  card   = slide.components;
+    const headerBg  = card.cardHeader.media ? `url('../assets/${card.cardHeader.media}')` : card.cardHeader.bgColor;
     
     const styles = {
         card : {
@@ -50,6 +50,7 @@ const CardLayout = ( props ) => {
                     title={card.cardHeader.title}
                     subtitle={card.cardHeader.subtitle}>
                     <div style={styles.button}
+                         id="button"
                          className="button">
                     </div>
                 </CardHeader>

@@ -7,7 +7,7 @@ import Slide from "../components/Slide";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as SlideActions from "../actions/SlideActions";
+import * as SlideActions from "../store/actions/SlideActions";
 
 let tl = new TimelineMax ();
 

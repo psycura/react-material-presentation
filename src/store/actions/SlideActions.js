@@ -1,4 +1,4 @@
-import { NEXT_SLIDE, RESET_TO_FIRST } from '../constants/ActionTypes'
+import { NEXT_SLIDE, RESET_TO_FIRST } from '../../constants/ActionTypes'
 
 export const nextSlide = ( nextSlideNumber ) => {
     return {

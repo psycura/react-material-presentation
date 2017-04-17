@@ -1,11 +1,14 @@
-import { TweenMax, TimelineMax } from "gsap";
-let tl = new TimelineMax ();
+import { TweenMax } from "gsap";
 
-const fadeIn = ( target ) => {
+const fadeIn = ( { duration, delay, target } ) => {
     return new Promise ( ( resolve ) => {
-        tl.from ( target, .375, {
-            opacity    : 0,
-            onComplete : () => resolve ()
+        TweenMax.set ( target, { opacity : 0 } );
+        TweenMax.to ( target, duration, {
+            delay,
+            opacity    : 1,
+            onComplete : () => {
+                resolve ();
+            }
         } )
     } )
 };

@@ -1,6 +1,9 @@
 
 export {fadeIn} from './fadeIn';
-export {slideOut} from './slideOut';
-export {slideIn} from './slideIn';
+export {fadeOut} from './fadeOut';
+export {slideTo} from './slideTo';
+export {slideFrom} from './slideFrom';
 export {listSplit} from './listSplit';
-export {transformFromPrevSlide} from './transformFromPrevSlide';
+export {moveToNextSlide} from './moveToNextSlide';
+export {morphTo} from './morphTo';
+export {menuPulse} from './menuPulse';

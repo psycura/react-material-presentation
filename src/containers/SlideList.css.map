@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,KAAK;EACD,UAAU,EAAE,eAAc",
-"sources": ["SlideList.scss"],
-"names": [],
-"file": "SlideList.css"
-}
